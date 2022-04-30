@@ -3,19 +3,27 @@ import java.util.Date;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Date start = new Date();
 
-        UsualMatrix firstMatrix = new UsualMatrix(100, 100);
+        UsualMatrix firstMatrix = new UsualMatrix(1000, 1000);
         firstMatrix.fillWithRnd();
-        UsualMatrix secondMatrix = new UsualMatrix(100, 100);
+        UsualMatrix secondMatrix = new UsualMatrix(1000, 1000);
         secondMatrix.fillWithRnd();
 
         UsualMatrix result = new UsualMatrix(firstMatrix.length, secondMatrix.length);
-        ParallelThreadsCreator.multiply(firstMatrix, secondMatrix, result);
-        // OR
-        result = firstMatrix.product(secondMatrix);
 
+        Date start = new Date();
+        ParallelThreadsCreator.multiply(firstMatrix, secondMatrix, result);
         Date end = new Date();
-        System.out.println("\nTime taken in milli seconds: " + (end.getTime() - start.getTime()));
+        System.out.println("Time taken in milli seconds using Thread multiplication: " + (end.getTime() - start.getTime()));
+
+        // start = new Date();
+        // result = firstMatrix.product(secondMatrix);
+        // end = new Date();
+        // System.out.println("Time taken in milli seconds using manual multiplication: " + (end.getTime() - start.getTime()));
+        // System.out.println("FIRST: \n" + firstMatrix);
+        // System.out.println("\nSECOND: \n" + secondMatrix);
+        // System.out.println("\nRESULT: \n" + result);
+
+
     }
 }

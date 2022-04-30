@@ -52,7 +52,9 @@ public class UsualMatrix {
 
     public void fillWithRnd() {
         for(int i = 0; i < width; i++) {
-            matrix[i][rnd(0, length - 1)] = rnd(1, 9);
+            for(int j = 0; j < length; j++) {
+                matrix[i][j] = rnd(0, 4);
+            }
         }
     }
 
